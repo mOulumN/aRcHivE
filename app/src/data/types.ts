@@ -115,6 +115,9 @@ export interface Snapshot {
   placements?: Placement[] // 예전 데이터·백업에는 없음
   projects?: Project[] // 예전 데이터·백업에는 없음
   meta?: Record<string, string>
+  // 여러 기기가 같은 폴더를 쓸 때 합치기용 (folderStore). 열쇠는 `종류:id`(예: `entries:abc`, `meta:settings`).
+  stamps?: Record<string, number> // 마지막으로 고친 시각. 예전 데이터에는 없음 = 0
+  deleted?: Record<string, number> // 지운 시각. 다른 기기가 지운 것을 되살리지 않게 남겨 둔다
 }
 
 export type PhotoKind = 'full' | 'thumb'

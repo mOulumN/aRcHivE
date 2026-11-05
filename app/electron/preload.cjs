@@ -11,6 +11,7 @@ contextBridge.exposeInMainWorld('archiveFs', {
   defaultFolder: call('fs:defaultFolder'),
   useFolder: call('fs:useFolder'),
   chooseFolder: call('fs:chooseFolder'),
+  changeFolder: call('fs:changeFolder'),
   readData: call('fs:readData'),
   writeData: call('fs:writeData'),
   writeFile: call('fs:writeFile'),

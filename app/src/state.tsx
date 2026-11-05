@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { forgetPhotoUrls, preparePhoto } from './data/photos'
 import { applySettings, DEFAULT_SETTINGS, parseSettings, type Settings } from './data/settings'
 import type { Store } from './data/store'
+import { REMOTE_CHANGED } from './data/folderStore'
 import { parseMapNotes, pruneMapNotes, type MapNotes } from './data/mapNotes'
 import { groupKeyOf } from './components/mapLayout'
 import {
@@ -238,6 +239,35 @@ export function ArchiveProvider({ store, children }: { store: Store; children: R
       document.removeEventListener('visibilitychange', hide)
     }
   }, [flush])
+
+  // 같은 폴더를 다른 기기도 쓴다: 다른 기기에서 바뀐 게 합쳐지면 다시 읽고, 앱으로 돌아올 때 확인한다.
+  useEffect(() => {
+    if (!store.refresh) return
+    let busy = false
+    const onRemote = () => {
+      if (busy) return
+      busy = true
+      void flush().then(reload).finally(() => { busy = false })
+    }
+    let last = 0
+    const check = () => {
+      if (document.visibilityState !== 'visible' || Date.now() - last < 5000) return
+      last = Date.now()
+      void store.refresh?.()
+    }
+    window.addEventListener(REMOTE_CHANGED, onRemote)
+    window.addEventListener('focus', check)
+    // 인터넷이 다시 연결되면 폰에만 저장해 둔 변경을 올린다.
+    const online = () => { last = 0; check() }
+    window.addEventListener('online', online)
+    document.addEventListener('visibilitychange', check)
+    return () => {
+      window.removeEventListener(REMOTE_CHANGED, onRemote)
+      window.removeEventListener('online', online)
+      window.removeEventListener('focus', check)
+      document.removeEventListener('visibilitychange', check)
+    }
+  }, [store, flush, reload])
 
   const value = useMemo<Archive>(() => {
     const addPhotos = async (files: File[], categoryIds: ID[], onProgress?: (done: number) => void, tagIds: ID[] = []) => {

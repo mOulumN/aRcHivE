@@ -64,6 +64,21 @@ export function BackupSection() {
     }
   }
 
+  const doChangeFolder = async () => {
+    setBusy('옮기는 중…')
+    try {
+      await archive.flush()
+      const r = await window.archiveFs!.changeFolder!()
+      if (!r || r.mode === 'same') return
+      await notice(r.mode === 'copied' ? '새 폴더로 옮겼어요. 원래 폴더는 그대로 남아 있어요.' : '새 폴더에 있던 기록을 불러와요.')
+      window.location.reload()
+    } catch (e) {
+      await notice(`폴더를 바꾸지 못했어요: ${(e as Error).message}`)
+    } finally {
+      setBusy(null)
+    }
+  }
+
   return (
     <section className="settings-section">
       <h3>백업</h3>
@@ -84,6 +99,9 @@ export function BackupSection() {
         </button>
         {!window.archiveAndroid && <button className="btn ghost" onClick={() => void window.archiveFs?.openFolder()}>
           폴더 열기
+        </button>}
+        {window.archiveFs?.changeFolder && <button className="btn ghost" disabled={!!busy} onClick={() => void doChangeFolder()}>
+          저장 폴더 바꾸기
         </button>}
       </div>
       <input

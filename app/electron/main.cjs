@@ -60,6 +60,36 @@ function registerIpc() {
     if (r.canceled || !r.filePaths[0]) return null
     return setFolder(r.filePaths[0])
   })
+  // 저장 폴더 바꾸기: 새 폴더에 이미 기록이 있으면 그대로 쓰고, 비어 있으면 지금 내용을 복사해 간다(원래 폴더는 그대로 둔다).
+  ipcMain.handle('fs:changeFolder', async (e) => {
+    if (!folder) throw new Error('저장 폴더가 정해지지 않았어요')
+    const win = BrowserWindow.fromWebContents(e.sender)
+    const r = await dialog.showOpenDialog(win, {
+      title: 'aRcHivE 저장 폴더 바꾸기',
+      defaultPath: path.dirname(folder),
+      properties: ['openDirectory', 'createDirectory'],
+    })
+    if (r.canceled || !r.filePaths[0]) return null
+    const next = path.resolve(r.filePaths[0])
+    const cur = path.resolve(folder)
+    const key = (p) => p.toLowerCase().replace(/[\\/]+$/, '')
+    if (key(next) === key(cur)) return { folder: cur, mode: 'same' }
+    const inside = (a, b) => key(a).startsWith(key(b) + path.sep)
+    if (inside(next, cur) || inside(cur, next)) throw new Error('지금 폴더의 안쪽이나 바깥쪽은 고를 수 없어요. 다른 위치를 골라 주세요')
+    const exists = await fs.access(path.join(next, 'data.json')).then(() => true, () => false)
+    if (exists) {
+      await setFolder(next)
+      return { folder: next, mode: 'existing' }
+    }
+    await fs.mkdir(next, { recursive: true })
+    await fs.cp(path.join(cur, 'photos'), path.join(next, 'photos'), { recursive: true }).catch(() => {})
+    await fs.cp(path.join(cur, 'thumbs'), path.join(next, 'thumbs'), { recursive: true }).catch(() => {})
+    await fs.copyFile(dataFile(), path.join(next, 'data.json')).catch((err) => {
+      if (err.code !== 'ENOENT') throw err
+    })
+    await setFolder(next)
+    return { folder: next, mode: 'copied' }
+  })
   ipcMain.handle('fs:readData', async () => {
     if (!folder) return null
     try {

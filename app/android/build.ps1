@@ -25,7 +25,7 @@ Run-Tool 'jar' @('cf', (Join-Path $buildRoot 'classes.jar'), '-C', (Join-Path $b
 Run-Tool (Join-Path $toolsRoot 'd8.bat') @('--min-api','26','--lib',$platform,'--output',(Join-Path $buildRoot 'dex'),(Join-Path $buildRoot 'classes.jar'))
 Run-Tool (Join-Path $toolsRoot 'aapt2.exe') @('compile','--dir',(Join-Path $androidRoot 'res'),'-o',(Join-Path $buildRoot 'resources.zip'))
 $unsigned = Join-Path $buildRoot 'unsigned.apk'
-Run-Tool (Join-Path $toolsRoot 'aapt2.exe') @('link','-o',$unsigned,'--manifest',(Join-Path $androidRoot 'AndroidManifest.xml'),'-I',$platform,'--min-sdk-version','26','--target-sdk-version','35','--version-code','1','--version-name','0.1.0','-R',(Join-Path $buildRoot 'resources.zip'))
+Run-Tool (Join-Path $toolsRoot 'aapt2.exe') @('link','-o',$unsigned,'--manifest',(Join-Path $androidRoot 'AndroidManifest.xml'),'-I',$platform,'--min-sdk-version','26','--target-sdk-version','35','--version-code','2','--version-name','0.1.1','-R',(Join-Path $buildRoot 'resources.zip'))
 Run-Tool 'jar' @('uf',$unsigned,'-C',(Join-Path $buildRoot 'dex'),'classes.dex')
 # Windows aapt2의 -A는 하위 경로를 역슬래시로 기록할 수 있으므로 직접 추가한다.
 Add-Type -AssemblyName System.IO.Compression
@@ -39,6 +39,31 @@ try {
     [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($package, $file.FullName, $entryName, [IO.Compression.CompressionLevel]::Optimal) | Out-Null
   }
 } finally { $package.Dispose() }
+
+# jar·aapt2가 만든 항목은 '뒤따르는 크기 기록(data descriptor)' 표시(플래그 비트 3)만 남고 기록 자체는 없어서,
+# 최신 안드로이드(예: 갤럭시 S26)가 classes.dex를 못 열고 앱이 바로 꺼진다.
+# 머리말에 크기가 이미 정확히 적혀 있으므로 그 표시만 지워서 바로잡는다(압축 방식은 그대로 둔다).
+$bytes = [IO.File]::ReadAllBytes($unsigned)
+$eocd = -1
+for ($i = $bytes.Length - 22; $i -ge 0; $i--) { if ([BitConverter]::ToUInt32($bytes, $i) -eq 0x06054b50) { $eocd = $i; break } }
+if ($eocd -lt 0) { throw 'APK 끝부분을 찾지 못했습니다.' }
+$count = [BitConverter]::ToUInt16($bytes, $eocd + 10)
+$pos = [int][BitConverter]::ToUInt32($bytes, $eocd + 16)
+$fixed = 0
+for ($n = 0; $n -lt $count; $n++) {
+  if ([BitConverter]::ToUInt32($bytes, $pos) -ne 0x02014b50) { throw 'APK 목록이 깨졌습니다.' }
+  $flags = [BitConverter]::ToUInt16($bytes, $pos + 8)
+  $local = [int][BitConverter]::ToUInt32($bytes, $pos + 42)
+  if ($flags -band 8) {
+    if ([BitConverter]::ToUInt32($bytes, $local + 18) -ne [BitConverter]::ToUInt32($bytes, $pos + 20)) { throw '머리말 크기가 목록과 달라 고칠 수 없습니다.' }
+    $bytes[$pos + 8] = $bytes[$pos + 8] -band 0xF7
+    $bytes[$local + 6] = $bytes[$local + 6] -band 0xF7
+    $fixed++
+  }
+  $pos += 46 + [BitConverter]::ToUInt16($bytes, $pos + 28) + [BitConverter]::ToUInt16($bytes, $pos + 30) + [BitConverter]::ToUInt16($bytes, $pos + 32)
+}
+[IO.File]::WriteAllBytes($unsigned, $bytes)
+Write-Output "APK 항목 표시 바로잡음: ${fixed}개"
 
 # 파일 누락과 잘못된 구분자를 서명 전에 검사한다.
 $package = [IO.Compression.ZipFile]::OpenRead($unsigned)
@@ -65,7 +90,7 @@ if (!$Keystore -and !(Test-Path -LiteralPath $key)) {
 }
 $releaseRoot = Join-Path (Split-Path $appRoot) '설치파일'
 New-Item -ItemType Directory -Path $releaseRoot -Force | Out-Null
-$apk = Join-Path $releaseRoot $(if ($Keystore) { 'aRcHivE-Android-0.1.0-release.apk' } else { 'aRcHivE-Android-0.1.0.apk' })
+$apk = Join-Path $releaseRoot $(if ($Keystore) { 'aRcHivE-Android-0.1.1-release.apk' } else { 'aRcHivE-Android-0.1.1.apk' })
 if ($Keystore) {
   # 비밀번호는 apksigner가 콘솔에서 직접 묻는다. 명령이나 파일에 기록하지 않는다.
   Run-Tool (Join-Path $toolsRoot 'apksigner.bat') @('sign','--ks',$key,'--ks-key-alias',$KeyAlias,'--out',$apk,$aligned)

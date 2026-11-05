@@ -1594,3 +1594,30 @@ body.dragging-entries {
   .home-menu button { min-height: 44px; }
   .home-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 18px; }
 }
+
+/* 폰: 드라이브 폴더와 사진을 주고받는 진행 바 (SyncBar) */
+.sync-bar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(var(--phone-bar, 0px) + var(--phone-bottom, 0px) + 12px);
+  z-index: 50000;
+  width: min(260px, calc(100vw - 32px));
+  padding: var(--btn-py) 12px;
+  line-height: var(--btn-lh);
+  font-size: 13px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  border: 1px solid var(--line);
+  pointer-events: none;
+}
+.sync-track {
+  margin-top: 5px;
+  height: 4px;
+  background: var(--soft);
+}
+.sync-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.2s;
+}

@@ -44,3 +44,4 @@ app/android/build/
 Thumbs.db
 .vscode/
 .idea/
+.vite/

@@ -20,4 +20,5 @@ export interface Store {
   readPhoto(id: ID, kind: PhotoKind): Promise<Blob | null>
   getMeta(key: string): Promise<string | null>
   setMeta(key: string, value: string): Promise<void>
+  refresh?(): Promise<void> // 폴더 저장만: 다른 기기에서 바뀐 내용 확인
 }

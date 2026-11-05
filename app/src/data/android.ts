@@ -1,10 +1,16 @@
 import type { ArchiveFs } from './folderStore'
+import { mergeSnapshots, normalizeSnapshot } from './merge'
+import type { Snapshot } from './types'
+
+export const SYNC_EVENT = 'archive:sync'
+export type SyncProgress = { done: number; total: number }
 
 declare global {
   interface Window {
     archiveAndroid?: { request(json: string): string }
     archiveExportResult?: (saved: boolean, error: string | null) => void
     archiveFolderResult?: (label: string | null, error: string | null) => void
+    archiveSync?: (done: number, total: number) => void
   }
 }
 
@@ -37,8 +43,19 @@ export function installAndroidBridge() {
       try { call('chooseFolder') }
       catch (error) { window.archiveFolderResult = undefined; reject(error) }
     }),
-    readData: async () => call<string | null>('readData'),
-    writeData: async (json) => { call('writeData', { json }) },
+    // 고른 폴더(드라이브)에 data.json이 여러 개 생겼으면 전부 받아 합친다. 하나도 버리지 않는다.
+    readData: async () => {
+      const value = call<string | string[] | null>('readData')
+      if (!Array.isArray(value)) return value
+      if (value.length <= 1) return value[0] ?? null
+      const snaps: Snapshot[] = []
+      for (const raw of value) {
+        try { snaps.push(normalizeSnapshot(JSON.parse(raw) as Partial<Snapshot>)) } catch { /* 깨진 사본은 건너뛴다(파일은 남아 있다) */ }
+      }
+      if (snaps.length === 0) throw new Error('저장 폴더의 기록 파일을 읽지 못했어요')
+      return JSON.stringify(snaps.reduce((a, b) => mergeSnapshots(a, b)), null, 1)
+    },
+    writeData: async (json, merged) => { call('writeData', { json, merged: merged === true }) },
     writeFile: async (rel, data) => { call('writeFile', { rel, data: await encode(data) }) },
     readFile: async (rel) => {
       const data = call<string | null>('readFile', { rel })
@@ -48,7 +65,11 @@ export function installAndroidBridge() {
     },
     deleteFile: async (rel) => { call('deleteFile', { rel }) },
     openFolder: async () => {},
+    prefetch: (rels) => { try { call('prefetch', { rels }) } catch { /* 다음에 다시 시도 */ } },
+    retry: () => { try { call('retry') } catch { /* 다음에 다시 시도 */ } },
   }
+  // 폰이 뒤에서 사진을 주고받는 진행 상황 → 화면 하단 바(SyncBar)
+  window.archiveSync = (done, total) => window.dispatchEvent(new CustomEvent(SYNC_EVENT, { detail: { done, total } }))
   window.archiveFs = fs
 }
 

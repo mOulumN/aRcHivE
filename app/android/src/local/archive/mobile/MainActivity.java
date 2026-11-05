@@ -77,6 +77,12 @@ public final class MainActivity extends Activity {
       }
     });
     web.setWebChromeClient(new WebChromeClient() {
+      // 화면 쪽 오류도 휴대폰 기록(adb logcat, 태그 aRcHivE)에 남긴다.
+      @Override public boolean onConsoleMessage(android.webkit.ConsoleMessage message) {
+        android.util.Log.println(message.messageLevel() == android.webkit.ConsoleMessage.MessageLevel.ERROR ? android.util.Log.ERROR : android.util.Log.INFO,
+          TreeStore.TAG, "[화면] " + message.message() + " (" + message.sourceId() + ":" + message.lineNumber() + ")");
+        return true;
+      }
       @Override public boolean onShowFileChooser(WebView view, ValueCallback<Uri[]> callback, FileChooserParams params) {
         if (chooser != null) chooser.onReceiveValue(null);
         chooser = callback;
@@ -117,11 +123,18 @@ public final class MainActivity extends Activity {
     Uri uri = Uri.parse(saved);
     for (android.content.UriPermission permission : getContentResolver().getPersistedUriPermissions()) {
       if (permission.getUri().equals(uri) && permission.isReadPermission() && permission.isWritePermission()) {
-        tree = new TreeStore(getContentResolver(), uri); return;
+        tree = openTree(uri); tree.resume(this::mimeOf); return;
       }
     }
     // 권한이 사라졌으면(폴더 삭제·권한 회수) 처음처럼 다시 고르게 한다.
     prefs.edit().remove("tree").remove("label").apply();
+  }
+  // 고른 폴더마다 폰 안에 사진 사본 자리를 따로 둔다.
+  private TreeStore openTree(Uri uri) {
+    File mirror = new File(getFilesDir(), "mirror/" + Integer.toHexString(uri.toString().hashCode()));
+    return new TreeStore(getContentResolver(), uri, mirror, (done, total) -> runOnUiThread(() -> {
+      if (web != null) web.evaluateJavascript("window.archiveSync && window.archiveSync(" + done + "," + total + ")", null);
+    }));
   }
   private String mimeOf(String relative) {
     String mime = MimeTypeMap.getSingleton().getMimeTypeFromExtension(relative.substring(relative.lastIndexOf('.') + 1));
@@ -175,8 +188,10 @@ public final class MainActivity extends Activity {
             }); break;
           }
           case "readData": if (tree != null) {
-            byte[] bytes = tree.read("data.json");
-            value = bytes == null ? JSONObject.NULL : new String(bytes, StandardCharsets.UTF_8); break;
+            // 드라이브에 data.json이 여러 개면 전부 돌려준다. 화면 쪽(android.ts)이 합친다.
+            org.json.JSONArray all = new org.json.JSONArray();
+            for (byte[] bytes : tree.remoteReadAll("data.json")) all.put(new String(bytes, StandardCharsets.UTF_8));
+            value = all; break;
           } else {
             AtomicFile atomic = new AtomicFile(new File(folder, "data.json"));
             try (InputStream input = atomic.openRead(); ByteArrayOutputStream output = new ByteArrayOutputStream()) {
@@ -189,9 +204,12 @@ public final class MainActivity extends Activity {
           case "writeData": {
             String json = args.getString("json"); new JSONObject(json);
             if (tree != null) {
-              byte[] previous = tree.read("data.json");
-              if (previous != null) tree.write("data.prev.json", previous, "application/json");
-              tree.write("data.json", json.getBytes(StandardCharsets.UTF_8), "application/json"); break;
+              byte[] previous = tree.remoteRead("data.json");
+              if (previous != null) tree.remoteWrite("data.prev.json", previous, "application/json");
+              tree.remoteWrite("data.json", json.getBytes(StandardCharsets.UTF_8), "application/json");
+              // 방금 쓴 내용이 폴더의 모든 data.json을 합친 결과일 때만 나머지를 정리한다.
+              if (args.optBoolean("merged", false)) tree.retireDuplicates("data.json");
+              break;
             }
             File file = new File(folder, "data.json");
             if (file.exists()) Files.copy(file.toPath(), new File(folder, "data.prev.json").toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -206,11 +224,23 @@ public final class MainActivity extends Activity {
           case "readFile": {
             if (tree != null) {
               String rel = args.getString("rel"); checkRelative(rel);
-              byte[] bytes = tree.read(rel);
+              byte[] bytes = tree.read(rel, mimeOf(rel));
               value = bytes == null ? JSONObject.NULL : Base64.encodeToString(bytes, Base64.NO_WRAP); break;
             }
             File file = photoFile(args.getString("rel"));
             value = file.exists() ? Base64.encodeToString(readBytes(file), Base64.NO_WRAP) : JSONObject.NULL; break;
+          }
+          case "prefetch": {
+            if (tree == null) break;
+            org.json.JSONArray list = args.getJSONArray("rels"); java.util.List<String> rels = new java.util.ArrayList<>();
+            for (int i = 0; i < list.length(); i++) { String rel = list.getString(i); checkRelative(rel); rels.add(rel); }
+            final TreeStore target = tree;
+            new Thread(() -> target.prefetch(rels)).start(); break;
+          }
+          case "retry": {
+            final TreeStore target = tree;
+            if (target != null) new Thread(() -> target.resume(MainActivity.this::mimeOf)).start();
+            break;
           }
           case "deleteFile": {
             if (tree != null) { String rel = args.getString("rel"); checkRelative(rel); tree.delete(rel); break; }
@@ -231,7 +261,10 @@ public final class MainActivity extends Activity {
           default: throw new Exception("지원하지 않는 동작이에요");
         }
         reply.put("value", value);
-      } catch (Exception error) { try { reply.put("error", error.getMessage() == null ? "저장하지 못했어요" : error.getMessage()); } catch (Exception ignored) {} }
+      } catch (Exception error) {
+        android.util.Log.w(TreeStore.TAG, "요청 실패: " + raw.substring(0, Math.min(raw.length(), 60)), error);
+        try { reply.put("error", error.getMessage() == null ? "저장하지 못했어요" : error.getMessage()); } catch (Exception ignored) {}
+      }
       return reply.toString();
     }
   }
@@ -251,7 +284,7 @@ public final class MainActivity extends Activity {
       new Thread(() -> {
         try {
           getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-          TreeStore picked = new TreeStore(getContentResolver(), uri);
+          TreeStore picked = openTree(uri);
           picked.ensureDirs();
           final String label = picked.label();
           getSharedPreferences("archive", MODE_PRIVATE).edit().putString("tree", uri.toString()).putString("label", label).apply();
@@ -263,7 +296,19 @@ public final class MainActivity extends Activity {
         }
       }).start();
     } else if (requestCode == PICK_FILE && chooser != null) {
-      chooser.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, data)); chooser = null;
+      // 여러 장 고르기(multiple)면 사진 선택 창은 결과를 ClipData로 준다. 기본 parseResult는 이걸 버려서
+      // "골랐는데 아무 일도 안 일어나는" 문제가 생겼다(E-02). 한 장·여러 장 모두 직접 꺼낸다.
+      Uri[] picked = null;
+      if (resultCode == RESULT_OK && data != null) {
+        android.content.ClipData clip = data.getClipData();
+        if (clip != null && clip.getItemCount() > 0) {
+          java.util.List<Uri> uris = new java.util.ArrayList<>();
+          for (int i = 0; i < clip.getItemCount(); i++) if (clip.getItemAt(i).getUri() != null) uris.add(clip.getItemAt(i).getUri());
+          if (!uris.isEmpty()) picked = uris.toArray(new Uri[0]);
+        } else if (data.getData() != null) picked = new Uri[] { data.getData() };
+      }
+      android.util.Log.i(TreeStore.TAG, "사진 선택 결과: " + (picked == null ? 0 : picked.length) + "장");
+      chooser.onReceiveValue(picked); chooser = null;
     } else if (requestCode == SAVE_BACKUP) {
       if (resultCode != RESULT_OK || data == null || data.getData() == null) { exportResult(false, null); return; }
       final Uri uri = data.getData();
@@ -276,6 +321,12 @@ public final class MainActivity extends Activity {
         runOnUiThread(() -> exportResult(true, null));
       }).start();
     }
+  }
+  // 앱으로 돌아올 때마다 못 올린 사진·못 지운 사진을 다시 시도한다(오프라인이었다가 연결된 경우).
+  @Override protected void onResume() {
+    super.onResume();
+    final TreeStore target = tree;
+    if (target != null) new Thread(() -> target.resume(this::mimeOf)).start();
   }
   @Override protected void onPause() {
     if (web != null) web.evaluateJavascript("window.dispatchEvent(new Event('archive:flush'))", null);

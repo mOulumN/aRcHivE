@@ -10,6 +10,7 @@ import { FolderSetup } from './screens/FolderSetup'
 import { Home } from './screens/Home'
 import { ArchiveProvider, useArchive } from './state'
 import { usePhoneViewport } from './components/usePhoneViewport'
+import { SyncBar } from './components/SyncBar'
 
 function Screens() {
   const { view, go } = useArchive()
@@ -60,6 +61,7 @@ export default function App() {
         <ImporterProvider>
           <EntryDragProvider>
             <Screens />
+            <SyncBar />
           </EntryDragProvider>
         </ImporterProvider>
       </AskProvider>
