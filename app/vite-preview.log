@@ -1,0 +1,131 @@
+
+  VITE v8.3.5  ready in 440 ms
+
+  ➜  Local:   http://127.0.0.1:5174/
+  ➜  press h + enter to show help
+오후 10:10:02 [vite] (client) hmr update /src/components/ProjectBoard.tsx
+오후 10:10:02 [vite] (client) hmr update /src/components/ProjectBoard.tsx
+오후 10:10:03 [vite] (client) hmr update /src/screens/ArchiveScreen.tsx
+오후 10:10:03 [vite] (client) hmr update /src/styles/app.css
+오후 10:10:48 [vite] (client) hmr update /src/components/ProjectBoard.tsx
+오후 10:12:43 [vite] (client) hmr update /src/state.tsx, /src/components/EntryDrag.tsx, /src/screens/Home.tsx, /src/App.tsx, /src/components/Importer.tsx, /src/components/Thumb.tsx, /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/screens/Board.tsx, /src/components/BackupPanel.tsx, /src/components/SelectPanel.tsx, /src/components/ProjectPicker.tsx, /src/components/InfoPanel.tsx
+오후 10:12:43 [vite] (client) hmr invalidate /src/state.tsx Could not Fast Refresh ("entriesFor" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:12:43 [vite] (client) hmr update /src/App.tsx, /src/components/Importer.tsx, /src/components/EntryDrag.tsx, /src/screens/ArchiveScreen.tsx, /src/screens/Home.tsx, /src/components/Thumb.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/BackupPanel.tsx, /src/components/ProjectBoard.tsx, /src/components/SeriesList.tsx, /src/screens/Board.tsx, /src/components/SelectPanel.tsx, /src/components/SettingsDialog.tsx, /src/components/ViewSwitch.tsx, /src/components/ProjectPicker.tsx and 3 more
+오후 10:12:43 [vite] (client) hmr invalidate /src/components/EntryDrag.tsx Could not Fast Refresh ("useEntryDrag" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:12:43 [vite] (client) hmr update /src/App.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/components/SeriesList.tsx
+오후 10:12:43 [vite] (client) hmr invalidate /src/components/Importer.tsx Could not Fast Refresh ("useImporter" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:12:43 [vite] (client) hmr update /src/App.tsx, /src/screens/Home.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx
+오후 10:12:43 [vite] (client) hmr invalidate /src/components/Thumb.tsx Could not Fast Refresh ("usePhotoUrl" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:12:43 [vite] (client) hmr update /src/components/EntryDrag.tsx, /src/screens/Home.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/screens/Board.tsx, /src/components/ProjectPicker.tsx
+오후 10:12:43 [vite] (client) hmr invalidate /src/components/BackupPanel.tsx Could not Fast Refresh ("useBackupStatus" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:12:43 [vite] (client) hmr update /src/screens/Home.tsx, /src/components/SettingsDialog.tsx
+오후 10:13:11 [vite] (client) hmr update /src/state.tsx
+오후 10:13:11 [vite] (client) hmr invalidate /src/state.tsx Could not Fast Refresh ("entriesFor" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:13:11 [vite] (client) hmr update /src/App.tsx, /src/components/Importer.tsx, /src/components/EntryDrag.tsx, /src/screens/ArchiveScreen.tsx, /src/screens/Home.tsx, /src/components/Thumb.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/BackupPanel.tsx, /src/components/ProjectBoard.tsx, /src/components/SeriesList.tsx, /src/screens/Board.tsx, /src/components/SelectPanel.tsx, /src/components/SettingsDialog.tsx, /src/components/ViewSwitch.tsx, /src/components/ProjectPicker.tsx and 3 more
+오후 10:13:12 [vite] (client) hmr invalidate /src/components/Importer.tsx Could not Fast Refresh ("useImporter" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:13:12 [vite] (client) hmr update /src/App.tsx, /src/screens/Home.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx
+오후 10:13:12 [vite] (client) hmr invalidate /src/components/EntryDrag.tsx Could not Fast Refresh ("useEntryDrag" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:13:12 [vite] (client) hmr update /src/App.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/components/SeriesList.tsx
+오후 10:13:12 [vite] (client) hmr invalidate /src/components/Thumb.tsx Could not Fast Refresh ("usePhotoUrl" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:13:12 [vite] (client) hmr update /src/components/EntryDrag.tsx, /src/screens/Home.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/screens/Board.tsx, /src/components/ProjectPicker.tsx
+오후 10:13:12 [vite] (client) hmr invalidate /src/components/BackupPanel.tsx Could not Fast Refresh ("useBackupStatus" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:13:12 [vite] (client) hmr update /src/screens/Home.tsx, /src/components/SettingsDialog.tsx
+오후 10:13:24 [vite] (client) hmr update /src/components/BackupPanel.tsx
+오후 10:13:24 [vite] (client) hmr invalidate /src/components/BackupPanel.tsx Could not Fast Refresh ("useBackupStatus" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:13:24 [vite] (client) hmr update /src/screens/Home.tsx, /src/components/SettingsDialog.tsx
+오후 10:14:40 [vite] (client) hmr update /src/components/ProjectBoard.tsx
+오후 10:16:03 [vite] (client) hmr update /src/components/ProjectBoard.tsx
+오후 10:16:35 [vite] (client) hmr update /src/components/MapView.tsx
+오후 10:16:36 [vite] (client) hmr update /src/screens/ArchiveScreen.tsx
+오후 10:16:36 [vite] (client) hmr update /src/styles/app.css
+오후 10:17:03 [vite] (client) hmr update /src/screens/Board.tsx
+오후 10:31:46 [vite] (client) hmr update /src/screens/ArchiveScreen.tsx
+오후 10:32:22 [vite] (client) hmr update /src/components/Gallery.tsx
+오후 10:32:22 [vite] (client) hmr update /src/components/MapView.tsx
+오후 10:32:22 [vite] (client) hmr update /src/components/ProjectBoard.tsx
+오후 10:33:02 [vite] (client) hmr update /src/components/Gallery.tsx
+오후 10:33:03 [vite] (client) hmr update /src/components/MapView.tsx
+오후 10:33:03 [vite] (client) hmr update /src/components/ProjectBoard.tsx
+오후 10:33:04 [vite] (client) hmr update /src/components/SelectPanel.tsx
+오후 10:33:05 [vite] (client) hmr update /src/screens/Board.tsx
+오후 10:33:35 [vite] (client) hmr update /src/components/PaneHeader.tsx
+오후 10:34:23 [vite] (client) hmr update /src/styles/app.css
+오후 10:35:09 [vite] (client) hmr update /src/components/EntryDrag.tsx
+오후 10:35:09 [vite] (client) hmr invalidate /src/components/EntryDrag.tsx Could not Fast Refresh ("useEntryDrag" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:35:09 [vite] (client) hmr update /src/App.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/components/SeriesList.tsx
+오후 10:35:50 [vite] (client) hmr update /src/App.tsx
+오후 10:35:51 [vite] (client) hmr update /src/styles/app.css
+오후 10:36:37 [vite] (client) hmr update /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/components/MapNotes.tsx
+오후 10:36:37 [vite] (client) hmr invalidate /src/components/MapNotes.tsx Could not Fast Refresh ("useMapNotes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:36:37 [vite] (client) hmr update /src/components/ProjectBoard.tsx, /src/components/MapView.tsx
+오후 10:36:38 [vite] (client) hmr update /src/components/useZoom.tsx
+오후 10:36:38 [vite] (client) hmr invalidate /src/components/useZoom.tsx Could not Fast Refresh ("useZoom" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:36:38 [vite] (client) hmr update /src/components/MapView.tsx, /src/components/ProjectBoard.tsx
+오후 10:37:19 [vite] (client) hmr update /src/components/MapNotes.tsx
+오후 10:37:19 [vite] (client) hmr invalidate /src/components/MapNotes.tsx Could not Fast Refresh ("useMapNotes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:37:19 [vite] (client) hmr update /src/components/ProjectBoard.tsx, /src/components/MapView.tsx
+오후 10:37:20 [vite] (client) hmr update /src/screens/Board.tsx
+오후 10:38:02 [vite] (client) hmr update /src/components/EntryDrag.tsx
+오후 10:38:02 [vite] (client) hmr invalidate /src/components/EntryDrag.tsx Could not Fast Refresh ("useEntryDrag" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:38:02 [vite] (client) hmr update /src/App.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/components/SeriesList.tsx
+오후 10:38:02 [vite] (client) hmr update /src/screens/ArchiveScreen.tsx
+오후 10:38:03 [vite] (client) hmr update /src/styles/app.css
+오후 10:40:23 [vite] (client) hmr update /src/components/PaneHeader.tsx
+오후 10:40:23 [vite] (client) hmr update /src/components/SelectPanel.tsx
+오후 10:40:24 [vite] (client) hmr update /src/components/Gallery.tsx
+오후 10:40:24 [vite] (client) hmr update /src/components/MapView.tsx
+오후 10:40:25 [vite] (client) hmr update /src/components/ProjectBoard.tsx
+오후 10:41:00 [vite] (client) hmr update /src/components/useZoom.tsx
+오후 10:41:00 [vite] (client) hmr invalidate /src/components/useZoom.tsx Could not Fast Refresh ("useZoom" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:41:00 [vite] (client) hmr update /src/components/MapView.tsx, /src/components/ProjectBoard.tsx
+오후 10:57:36 [vite] (client) hmr update /src/components/SelectPanel.tsx
+오후 10:57:37 [vite] (client) hmr update /src/components/BaseTagPicker.tsx
+오후 10:57:38 [vite] (client) hmr update /src/components/InfoPanel.tsx
+오후 10:57:38 [vite] (client) hmr update /src/state.tsx, /src/components/ColorPicker.tsx
+오후 10:57:38 [vite] (client) hmr invalidate /src/state.tsx Could not Fast Refresh ("entriesFor" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:57:38 [vite] (client) hmr update /src/App.tsx, /src/components/Importer.tsx, /src/components/EntryDrag.tsx, /src/screens/ArchiveScreen.tsx, /src/screens/Home.tsx, /src/components/Thumb.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/BackupPanel.tsx, /src/components/ProjectBoard.tsx, /src/components/SeriesList.tsx, /src/screens/Board.tsx, /src/components/SelectPanel.tsx, /src/components/SettingsDialog.tsx, /src/components/ViewSwitch.tsx, /src/components/ProjectPicker.tsx and 3 more
+오후 10:57:38 [vite] (client) hmr invalidate /src/components/Importer.tsx Could not Fast Refresh ("useImporter" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:57:38 [vite] (client) hmr update /src/App.tsx, /src/screens/Home.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx
+오후 10:57:38 [vite] (client) hmr invalidate /src/components/EntryDrag.tsx Could not Fast Refresh ("useEntryDrag" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:57:38 [vite] (client) hmr update /src/App.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/components/SeriesList.tsx
+오후 10:57:38 [vite] (client) hmr invalidate /src/components/Thumb.tsx Could not Fast Refresh ("usePhotoUrl" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:57:38 [vite] (client) hmr update /src/components/EntryDrag.tsx, /src/screens/Home.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/screens/Board.tsx, /src/components/ProjectPicker.tsx
+오후 10:57:38 [vite] (client) hmr invalidate /src/components/BackupPanel.tsx Could not Fast Refresh ("useBackupStatus" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 10:57:38 [vite] (client) hmr update /src/screens/Home.tsx, /src/components/SettingsDialog.tsx
+오후 10:57:39 [vite] (client) hmr update /src/components/SettingsDialog.tsx
+오후 10:58:22 [vite] (client) hmr update /src/components/MapNotes.tsx
+오후 10:58:22 [vite] (client) hmr invalidate /src/components/MapNotes.tsx Could not Fast Refresh (export "MapNoteMenu" added)
+오후 10:58:22 [vite] (client) hmr update /src/components/ProjectBoard.tsx, /src/components/MapView.tsx
+오후 10:58:24 [vite] (client) hmr update /src/components/Gallery.tsx
+오후 10:58:24 [vite] (client) hmr update /src/components/MapView.tsx
+오후 10:58:24 [vite] (client) hmr update /src/components/ProjectBoard.tsx
+오후 10:59:06 [vite] (client) hmr update /src/screens/Board.tsx
+오후 11:00:34 [vite] (client) hmr update /src/screens/Board.tsx
+오후 11:00:35 [vite] (client) hmr update /src/styles/app.css
+오후 11:01:16 [vite] (client) hmr update /src/screens/Board.tsx
+오후 11:01:16 [vite] (client) hmr update /src/components/MapNotes.tsx
+오후 11:01:16 [vite] (client) hmr invalidate /src/components/MapNotes.tsx Could not Fast Refresh ("useMapNotes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 11:01:16 [vite] (client) hmr update /src/components/ProjectBoard.tsx, /src/components/MapView.tsx
+오후 11:03:22 [vite] (client) hmr update /src/styles/app.css
+오후 11:11:01 [vite] (client) hmr update /src/App.tsx
+오후 11:11:01 [vite] (client) hmr update /src/state.tsx
+오후 11:11:02 [vite] (client) hmr invalidate /src/state.tsx Could not Fast Refresh ("entriesFor" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 11:11:02 [vite] (client) hmr update /src/App.tsx, /src/components/Importer.tsx, /src/components/EntryDrag.tsx, /src/screens/ArchiveScreen.tsx, /src/screens/Home.tsx, /src/components/Thumb.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/BackupPanel.tsx, /src/components/ProjectBoard.tsx, /src/components/SeriesList.tsx, /src/screens/Board.tsx, /src/components/SelectPanel.tsx, /src/components/SettingsDialog.tsx, /src/components/ViewSwitch.tsx, /src/components/ProjectPicker.tsx and 4 more
+오후 11:11:02 [vite] (client) hmr invalidate /src/components/Importer.tsx Could not Fast Refresh ("useImporter" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 11:11:02 [vite] (client) hmr update /src/App.tsx, /src/screens/Home.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx
+오후 11:11:02 [vite] (client) hmr invalidate /src/components/EntryDrag.tsx Could not Fast Refresh ("useEntryDrag" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 11:11:02 [vite] (client) hmr update /src/App.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/components/SeriesList.tsx
+오후 11:11:02 [vite] (client) hmr invalidate /src/components/Thumb.tsx Could not Fast Refresh ("usePhotoUrl" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 11:11:02 [vite] (client) hmr update /src/components/EntryDrag.tsx, /src/screens/Home.tsx, /src/components/Gallery.tsx, /src/components/MapView.tsx, /src/components/ProjectBoard.tsx, /src/screens/Board.tsx, /src/components/ProjectPicker.tsx
+오후 11:11:02 [vite] (client) hmr invalidate /src/components/BackupPanel.tsx Could not Fast Refresh ("useBackupStatus" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 11:11:02 [vite] (client) hmr update /src/screens/Home.tsx, /src/components/SettingsDialog.tsx
+오후 11:11:02 [vite] (client) hmr invalidate /src/components/MapNotes.tsx Could not Fast Refresh ("useMapNotes" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 11:11:02 [vite] (client) hmr update /src/components/ProjectBoard.tsx, /src/components/MapView.tsx
+오후 11:12:23 [vite] (client) page reload src/main.tsx
+오후 11:12:24 [vite] (client) hmr update /src/components/BackupPanel.tsx
+오후 11:12:24 [vite] (client) hmr invalidate /src/components/BackupPanel.tsx Could not Fast Refresh ("useBackupStatus" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 11:12:24 [vite] (client) hmr update /src/screens/Home.tsx, /src/components/SettingsDialog.tsx
+오후 11:12:25 [vite] (client) hmr update /src/components/BackupPanel.tsx
+오후 11:12:25 [vite] (client) hmr invalidate /src/components/BackupPanel.tsx Could not Fast Refresh ("useBackupStatus" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+오후 11:12:25 [vite] (client) hmr update /src/screens/Home.tsx, /src/components/SettingsDialog.tsx
+오후 11:12:25 [vite] (client) hmr update /src/App.tsx

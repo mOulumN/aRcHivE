@@ -1,0 +1,83 @@
+[
+  {
+    "name": "web-desktop",
+    "checks": [
+      "gallery loads from production build",
+      "collapsed selection keeps selecting",
+      "map note connection works",
+      "settings flush saves before debounce",
+      "category deletion preserves pending note",
+      "deleted category is not restored by delayed save",
+      "deleted category map notes cleaned",
+      "photo import opens record",
+      "photo import persists new record",
+      "record note can be created",
+      "lifecycle flush persists pending record"
+    ],
+    "errors": []
+  },
+  {
+    "name": "web-phone-360",
+    "checks": [
+      "gallery loads from production build",
+      "drawer closes after navigation",
+      "collapsed selection keeps selecting",
+      "mobile contextual menu visible",
+      "map note connection works",
+      "mobile pinch works in production build",
+      "font remains 14px during pinch",
+      "settings flush saves before debounce",
+      "category deletion preserves pending note",
+      "deleted category is not restored by delayed save",
+      "deleted category map notes cleaned",
+      "photo import opens record",
+      "photo import persists new record",
+      "record note can be created",
+      "lifecycle flush persists pending record"
+    ],
+    "errors": []
+  },
+  {
+    "name": "web-phone-435",
+    "checks": [
+      "gallery loads from production build",
+      "drawer closes after navigation",
+      "collapsed selection keeps selecting",
+      "mobile contextual menu visible",
+      "map note connection works",
+      "mobile pinch works in production build",
+      "font remains 14px during pinch",
+      "settings flush saves before debounce",
+      "category deletion preserves pending note",
+      "deleted category is not restored by delayed save",
+      "deleted category map notes cleaned",
+      "photo import opens record",
+      "photo import persists new record",
+      "record note can be created",
+      "lifecycle flush persists pending record"
+    ],
+    "errors": []
+  },
+  {
+    "name": "android-adapter",
+    "checks": [
+      "gallery loads from production build",
+      "drawer closes after navigation",
+      "collapsed selection keeps selecting",
+      "mobile contextual menu visible",
+      "map note connection works",
+      "mobile pinch works in production build",
+      "font remains 14px during pinch",
+      "settings flush saves before debounce",
+      "category deletion preserves pending note",
+      "deleted category is not restored by delayed save",
+      "deleted category map notes cleaned",
+      "photo import opens record",
+      "photo import persists new record",
+      "record note can be created",
+      "lifecycle flush persists pending record",
+      "Android backup adapter export completes"
+    ],
+    "errors": []
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "name": "archive",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "app": "npm run build && electron .",
+    "dist:win": "npm run build && electron-builder --win nsis"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "^45.2.2",
+    "electron-builder": "^26.18.0",
+    "oxlint": "^1.89.0",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.5",
+    "@fontsource/noto-sans-kr": "^5.3.1",
+    "dexie": "^4.4.7",
+    "fflate": "^0.8.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "description": "aRcHivE — 사진에 생각을 붙여 두는 아카이브",
+  "author": "mOulumN",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mOulumN/aRcHivE.git"
+  },
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "local.archive.app",
+    "productName": "aRcHivE",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "electron/**",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "shortcutName": "aRcHivE",
+      "artifactName": "aRcHivE-Setup-${version}.${ext}"
+    },
+    "electronLanguages": [
+      "ko",
+      "en-US"
+    ]
+  }
+}

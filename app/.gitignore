@@ -1,0 +1,27 @@
+# Logs
+logs
+*.log
+# 미리보기 서버 기록은 "만들어 온 과정"의 기록이라 올린다(개인 경로는 <프로젝트 폴더>로 바꿔 둠)
+!vite-preview*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+release

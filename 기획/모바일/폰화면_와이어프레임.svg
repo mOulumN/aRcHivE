@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1290" height="800" viewBox="0 0 1290 800">
+<rect width="1290" height="800" fill="white"/>
+<text x="40" y="44" font-size="22" text-anchor="start" fill="#111111" font-weight="500" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">aRcHivE — 폰 세로 화면 구성 제안 (와이어프레임)</text>
+<text x="40" y="70" font-size="13" text-anchor="start" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">규칙: 흰 바탕 · 가는 검정 선 · 테마 색 하나(초록은 사용자가 정한 테마 색) · 머리줄은 한 줄(높이 고정) · 조작은 아래 바</text>
+<clipPath id="c0"><rect x="40" y="100" width="270" height="560" rx="22"/></clipPath>
+<rect x="40" y="100" width="270" height="560" rx="22" fill="white" stroke="#111111" stroke-width="2.5" />
+<g clip-path="url(#c0)">
+<line x1="56" y1="120" x2="72" y2="120" stroke="#111111" stroke-width="1.6"/>
+<line x1="56" y1="126" x2="72" y2="126" stroke="#111111" stroke-width="1.6"/>
+<line x1="56" y1="132" x2="72" y2="132" stroke="#111111" stroke-width="1.6"/>
+<text x="84" y="133" font-size="16" text-anchor="start" fill="#111111" font-weight="500" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">전체</text>
+<text x="294" y="133" font-size="13" text-anchor="end" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">···</text>
+<line x1="40" y1="156" x2="310" y2="156" stroke="#111111" stroke-width="1.5"/>
+<rect x="40" y="156" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="60" y="178" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="130" y="156" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="150" y="178" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="220" y="156" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="240" y="178" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="40" y="246" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="60" y="268" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="130" y="246" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="150" y="268" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="220" y="246" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="240" y="268" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="40" y="336" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="60" y="358" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="130" y="336" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="150" y="358" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="220" y="336" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="240" y="358" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="40" y="426" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="60" y="448" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="130" y="426" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="150" y="448" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="220" y="426" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="240" y="448" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="40" y="516" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="60" y="538" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="130" y="516" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="150" y="538" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="220" y="516" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="240" y="538" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<line x1="40" y1="596" x2="310" y2="596" stroke="#111111" stroke-width="1.5"/>
+<rect x="52" y="614" width="66" height="24" rx="0" fill="#8cff6b" stroke="#111111" stroke-width="1.2" />
+<text x="85.0" y="631" font-size="12" text-anchor="middle" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">갤러리</text>
+<rect x="124" y="614" width="44" height="24" rx="0" fill="white" stroke="#111111" stroke-width="1.2" />
+<text x="146.0" y="631" font-size="12" text-anchor="middle" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">맵</text>
+<rect x="174" y="614" width="54" height="24" rx="0" fill="white" stroke="#111111" stroke-width="1.2" />
+<text x="201.0" y="631" font-size="12" text-anchor="middle" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">선택</text>
+<rect x="234" y="614" width="64" height="24" rx="0" fill="white" stroke="#111111" stroke-width="1.2" />
+<text x="266.0" y="631" font-size="12" text-anchor="middle" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">사진 +</text>
+</g>
+<text x="175.0" y="688" font-size="15" text-anchor="middle" fill="#111111" font-weight="500" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">1  갤러리</text>
+<text x="175.0" y="708" font-size="12" text-anchor="middle" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">머리줄 한 줄 + 아래 조작 바</text>
+<text x="175.0" y="724" font-size="12" text-anchor="middle" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">(갤러리·맵 전환 / 선택 / 사진 넣기)</text>
+<clipPath id="c1"><rect x="350" y="100" width="270" height="560" rx="22"/></clipPath>
+<rect x="350" y="100" width="270" height="560" rx="22" fill="white" stroke="#111111" stroke-width="2.5" />
+<g clip-path="url(#c1)">
+<line x1="366" y1="120" x2="382" y2="120" stroke="#111111" stroke-width="1.6"/>
+<line x1="366" y1="126" x2="382" y2="126" stroke="#111111" stroke-width="1.6"/>
+<line x1="366" y1="132" x2="382" y2="132" stroke="#111111" stroke-width="1.6"/>
+<text x="394" y="133" font-size="16" text-anchor="start" fill="#111111" font-weight="500" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">전체</text>
+<line x1="350" y1="156" x2="620" y2="156" stroke="#111111" stroke-width="1.5"/>
+<rect x="350" y="156" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="370" y="178" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="440" y="156" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="460" y="178" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="530" y="156" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="550" y="178" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="350" y="246" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="370" y="268" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="440" y="246" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="460" y="268" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="530" y="246" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="550" y="268" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="350" y="336" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="370" y="358" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="440" y="336" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="460" y="358" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="530" y="336" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="550" y="358" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="350" y="426" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="370" y="448" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="440" y="426" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="460" y="448" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="530" y="426" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="550" y="448" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="350" y="516" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="370" y="538" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="440" y="516" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="460" y="538" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="530" y="516" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="550" y="538" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="350" y="100" width="270" height="560" fill="black" opacity="0.18"/>
+<rect x="350" y="100" width="210" height="560" rx="0" fill="white" stroke="#111111" stroke-width="2" />
+<text x="366" y="133" font-size="16" text-anchor="start" fill="#111111" font-weight="500" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">aRcHivE</text>
+<line x1="350" y1="156" x2="560" y2="156" stroke="#111111" stroke-width="1.5"/>
+<rect x="350" y="156" width="210" height="38" rx="0" fill="#8cff6b" stroke="none" stroke-width="0" />
+<text x="364" y="181" font-size="14" text-anchor="start" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">전체 ( 12 )</text>
+<line x1="350" y1="194" x2="560" y2="194" stroke="#111111" stroke-width="1"/>
+<text x="364" y="219" font-size="14" text-anchor="start" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">픽셀 ( 15 )</text>
+<text x="548" y="219" font-size="12" text-anchor="end" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">(수정) ✕</text>
+<line x1="350" y1="232" x2="560" y2="232" stroke="#111111" stroke-width="1"/>
+<text x="364" y="257" font-size="14" text-anchor="start" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">UI ( 02 )</text>
+<text x="548" y="257" font-size="12" text-anchor="end" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">(수정) ✕</text>
+<line x1="350" y1="270" x2="560" y2="270" stroke="#111111" stroke-width="1"/>
+<text x="364" y="290" font-size="11" text-anchor="start" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">프로젝트</text>
+<line x1="350" y1="298" x2="560" y2="298" stroke="#111111" stroke-width="1"/>
+<text x="364" y="323" font-size="14" text-anchor="start" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">시안 ( 03 )</text>
+<text x="548" y="323" font-size="12" text-anchor="end" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">(수정) ✕</text>
+<line x1="350" y1="336" x2="560" y2="336" stroke="#111111" stroke-width="1"/>
+<text x="364" y="361" font-size="14" text-anchor="start" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">두번째 ( 07 )</text>
+<text x="548" y="361" font-size="12" text-anchor="end" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">(수정) ✕</text>
+<line x1="350" y1="374" x2="560" y2="374" stroke="#111111" stroke-width="1"/>
+<text x="364" y="399" font-size="14" text-anchor="start" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">+ 새 프로젝트</text>
+<line x1="350" y1="412" x2="560" y2="412" stroke="#111111" stroke-width="1"/>
+<line x1="350" y1="560" x2="560" y2="560" stroke="#111111" stroke-width="1.5"/>
+<text x="364" y="590" font-size="14" text-anchor="start" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">태그</text>
+<text x="364" y="628" font-size="14" text-anchor="start" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">설정</text>
+</g>
+<text x="485.0" y="688" font-size="15" text-anchor="middle" fill="#111111" font-weight="500" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">2  왼쪽 목록은 서랍</text>
+<text x="485.0" y="708" font-size="12" text-anchor="middle" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">왼쪽 위 메뉴 버튼으로 밀어 열기.</text>
+<text x="485.0" y="724" font-size="12" text-anchor="middle" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">(수정)·✕는 항상 보이게(마우스 없음)</text>
+<clipPath id="c2"><rect x="660" y="100" width="270" height="560" rx="22"/></clipPath>
+<rect x="660" y="100" width="270" height="560" rx="22" fill="white" stroke="#111111" stroke-width="2.5" />
+<g clip-path="url(#c2)">
+<text x="676" y="133" font-size="16" text-anchor="start" fill="#111111" font-weight="500" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">3장 선택</text>
+<text x="914" y="133" font-size="13" text-anchor="end" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">모두 선택</text>
+<line x1="660" y1="156" x2="930" y2="156" stroke="#111111" stroke-width="1.5"/>
+<rect x="660" y="156" width="90" height="90" rx="0" fill="#8cff6b" stroke="#111111" stroke-width="1" />
+<rect x="680" y="178" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="750" y="156" width="90" height="90" rx="0" fill="#8cff6b" stroke="#111111" stroke-width="1" />
+<rect x="770" y="178" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="840" y="156" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="860" y="178" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="660" y="246" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="680" y="268" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="750" y="246" width="90" height="90" rx="0" fill="#8cff6b" stroke="#111111" stroke-width="1" />
+<rect x="770" y="268" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="840" y="246" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="860" y="268" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="660" y="336" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="680" y="358" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="750" y="336" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="770" y="358" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="840" y="336" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="860" y="358" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="660" y="426" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="680" y="448" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="750" y="426" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="770" y="448" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="840" y="426" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="860" y="448" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="660" y="516" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="680" y="538" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="750" y="516" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="770" y="538" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="840" y="516" width="90" height="90" rx="0" fill="white" stroke="#111111" stroke-width="1" />
+<rect x="860" y="538" width="50" height="46" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="660" y="450" width="270" height="210" rx="0" fill="white" stroke="#111111" stroke-width="2" />
+<text x="674" y="476" font-size="11" text-anchor="start" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">프로젝트</text>
+<rect x="674" y="484" width="52" height="24" rx="0" fill="#8cff6b" stroke="#111111" stroke-width="1.2" />
+<text x="700.0" y="501" font-size="12" text-anchor="middle" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">시안</text>
+<rect x="732" y="484" width="30" height="24" rx="0" fill="white" stroke="#111111" stroke-width="1.2" />
+<text x="747.0" y="501" font-size="12" text-anchor="middle" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">+</text>
+<text x="674" y="538" font-size="11" text-anchor="start" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">카테고리</text>
+<rect x="674" y="546" width="52" height="24" rx="0" fill="white" stroke="#111111" stroke-width="1.2" />
+<text x="700.0" y="563" font-size="12" text-anchor="middle" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">픽셀</text>
+<rect x="732" y="546" width="40" height="24" rx="0" fill="white" stroke="#111111" stroke-width="1.2" />
+<text x="752.0" y="563" font-size="12" text-anchor="middle" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">UI</text>
+<rect x="778" y="546" width="30" height="24" rx="0" fill="white" stroke="#111111" stroke-width="1.2" />
+<text x="793.0" y="563" font-size="12" text-anchor="middle" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">+</text>
+<text x="674" y="600" font-size="11" text-anchor="start" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">탭하면 고른 사진 전부에 적용,</text>
+<text x="674" y="616" font-size="11" text-anchor="start" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">다시 탭하면 전부에서 뺌</text>
+<rect x="858" y="626" width="58" height="24" rx="0" fill="white" stroke="#111111" stroke-width="1.2" />
+<text x="887.0" y="643" font-size="12" text-anchor="middle" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">완료</text>
+</g>
+<text x="795.0" y="688" font-size="15" text-anchor="middle" fill="#111111" font-weight="500" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">3  선택 모드</text>
+<text x="795.0" y="708" font-size="12" text-anchor="middle" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">고른 칸은 색으로 채움(체크 없음)</text>
+<text x="795.0" y="724" font-size="12" text-anchor="middle" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">선택 창은 아래에서 올라오는 시트</text>
+<clipPath id="c3"><rect x="970" y="100" width="270" height="560" rx="22"/></clipPath>
+<rect x="970" y="100" width="270" height="560" rx="22" fill="white" stroke="#111111" stroke-width="2.5" />
+<g clip-path="url(#c3)">
+<line x1="986" y1="120" x2="1002" y2="120" stroke="#111111" stroke-width="1.6"/>
+<line x1="986" y1="126" x2="1002" y2="126" stroke="#111111" stroke-width="1.6"/>
+<line x1="986" y1="132" x2="1002" y2="132" stroke="#111111" stroke-width="1.6"/>
+<text x="1014" y="133" font-size="16" text-anchor="start" fill="#111111" font-weight="500" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">시안</text>
+<text x="1224" y="133" font-size="13" text-anchor="end" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">···</text>
+<line x1="970" y1="156" x2="1240" y2="156" stroke="#111111" stroke-width="1.5"/>
+<rect x="988" y="180" width="100" height="76" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="1120" y="210" width="88" height="110" rx="0" fill="#f1f1f1" stroke="#999999" stroke-width="1" />
+<rect x="1000" y="310" width="112" height="56" rx="0" fill="white" stroke="#111111" stroke-width="2.2" />
+<text x="1010" y="342" font-size="12" text-anchor="start" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">색감 좋다</text>
+<line x1="1040" y1="310" x2="1038" y2="256" stroke="#111111" stroke-width="1.2"/>
+<line x1="1080" y1="310" x2="1160" y2="320" stroke="#111111" stroke-width="1.2"/>
+<rect x="1138" y="362" width="90" height="70" rx="0" fill="#8cff6b" stroke="#111111" stroke-width="2" opacity="0.92"/>
+<text x="1183" y="403" font-size="11" text-anchor="middle" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">끄는 중</text>
+<rect x="970" y="490" width="270" height="170" rx="0" fill="white" stroke="#111111" stroke-width="2" />
+<text x="984" y="514" font-size="11" text-anchor="start" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">여기에 놓으면 담겨요</text>
+<rect x="982" y="524" width="246" height="36" rx="0" fill="#8cff6b" stroke="#111111" stroke-width="1.5" />
+<text x="994" y="547" font-size="14" text-anchor="start" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">프로젝트 2</text>
+<rect x="982" y="568" width="246" height="36" rx="0" fill="white" stroke="#111111" stroke-width="1.5" />
+<text x="994" y="591" font-size="14" text-anchor="start" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">시안 (지금 프로젝트)</text>
+<rect x="982" y="612" width="246" height="36" rx="0" fill="white" stroke="#111111" stroke-width="1.5" />
+<text x="994" y="635" font-size="14" text-anchor="start" fill="#111111" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">픽셀 (카테고리)</text>
+</g>
+<text x="1105.0" y="688" font-size="15" text-anchor="middle" fill="#111111" font-weight="500" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">4  보드에서 꾹 눌러 끌기</text>
+<text x="1105.0" y="708" font-size="12" text-anchor="middle" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">서랍이 닫혀 있어 목적지가 안 보이므로</text>
+<text x="1105.0" y="724" font-size="12" text-anchor="middle" fill="#666666" font-weight="400" font-family="'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif">꾹 누르면 목적지가 아래 시트로 올라옴</text>
+</svg>

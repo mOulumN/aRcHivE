@@ -1,0 +1,45 @@
+오후 10:14:40 [vite] Internal server error: Transform failed with 1 error:
+
+[31m[PARSE_ERROR] [0mExpected `}` but found `EOF`
+    [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/components/ProjectBoard.tsx:82:2 [38;5;246m][0m
+    [38;5;246m│[0m
+ [38;5;246m25 │[0m [38;5;249me[0m[38;5;249mx[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mu[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mi[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249m [0m[38;5;249mP[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mj[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mB[0m[38;5;249mo[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249md[0m[38;5;249m([0m[38;5;249m{[0m[38;5;249m [0m[38;5;249mp[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mj[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mI[0m[38;5;249md[0m[38;5;249m [0m[38;5;249m}[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0m[38;5;249mp[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mj[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mI[0m[38;5;249md[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249mI[0m[38;5;249mD[0m[38;5;249m [0m[38;5;249m}[0m[38;5;249m)[0m[38;5;249m [0m{
+ [38;5;240m   │[0m                                                                ┬  
+ [38;5;240m   │[0m                                                                ╰── Opened here
+ [38;5;240m   │[0m 
+ [38;5;246m82 │[0m 
+ [38;5;240m   │[0m  │ 
+ [38;5;240m   │[0m  ╰─ `}` expected
+[38;5;246m────╯[0m
+
+  Plugin: vite:oxc
+  File: <프로젝트 폴더>/app/src/components/ProjectBoard.tsx
+      at transformWithOxc (file:///<프로젝트 폴더>/app/node_modules/vite/dist/node/chunks/node.js:7618:19)
+      at TransformPluginContext.transform (file:///<프로젝트 폴더>/app/node_modules/vite/dist/node/chunks/node.js:7690:26)
+      at EnvironmentPluginContainer.transform (file:///<프로젝트 폴더>/app/node_modules/vite/dist/node/chunks/node.js:8582:51)
+      at async loadAndTransform (file:///<프로젝트 폴더>/app/node_modules/vite/dist/node/chunks/node.js:20155:26)
+      at async viteTransformMiddleware (file:///<프로젝트 폴더>/app/node_modules/vite/dist/node/chunks/node.js:20375:20)
+오후 10:14:40 [vite] (client) [console.error] [vite] Failed to reload /src/components/ProjectBoard.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+오후 10:57:38 [vite] (client) [Unhandled error] Error: ArchiveProvider 밖에서 사용됨
+ > useArchive src/state.tsx:99:18
+    97 |  export function useArchive() {
+    98 |    const ctx = useContext(Ctx)
+    99 |    if (!ctx) throw new Error('ArchiveProvider 밖에서 사용됨')
+       |                    ^
+    100|    return ctx
+    101|  }
+ > ImporterProvider src/components/Importer.tsx:16:18
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:10
+
+오후 10:57:38 [vite] (client) [console.warn] An error occurred in the <ImporterProvider> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
