@@ -6,8 +6,8 @@
 
 [Releases](https://github.com/mOulumN/aRcHivE/releases)에서 받을 수 있습니다.
 
-- **Windows**: `aRcHivE-Setup-0.1.0.exe` (서명되지 않아 Windows 경고가 뜰 수 있습니다)
-- **Android**: `aRcHivE-Android-0.1.0-release.apk`
+- **Windows**: `aRcHivE-Setup-0.1.2.exe` (서명되지 않아 Windows 경고가 뜰 수 있습니다)
+- **Android**: `aRcHivE-Android-0.1.2-release.apk`
 
 웹 화면(`app/`)은 구경용입니다. 브라우저 저장소를 쓰므로 브라우저 기록을 지우면 사라질 수 있습니다. 실제로 쓰려면 위 설치 파일을 쓰세요.
 
@@ -19,7 +19,7 @@
 323a29eb6fcc315a507dc2f62b39e514786272058e1bbee7ceace45703050380
 ```
 
-확인 방법: `apksigner verify --print-certs aRcHivE-Android-0.1.0-release.apk`
+확인 방법: `apksigner verify --print-certs aRcHivE-Android-0.1.2-release.apk`
 
 ## 저장 위치
 

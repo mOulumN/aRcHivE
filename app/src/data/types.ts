@@ -43,6 +43,7 @@ export interface ProjectNote {
   w: number
   h?: number
   color?: string // 예전 메모는 흰색
+  fontSize?: number // 글자 크기(배율 100% 기준 px). 없으면 설정의 메모 글자 크기
   entryIds: ID[] // 이 사진들과 선으로 연결 (하나의 메모에 여러 장)
   entryId?: ID | null // 예전: 하나만 연결. 읽을 때 entryIds로 바꾼다(normalizeProject)
 }
@@ -78,6 +79,7 @@ export interface Note {
   order: number // F-09 문서로 뽑기 대비 순서
   anchorId: ID | null
   photoLinked?: boolean // 지목 없이 사진 자체와 연결
+  fontSize?: number // 글자 크기(배율 100% 기준 px). 없으면 설정의 메모 글자 크기. 확대·축소해도 칸과 같은 비율로 커지고 작아진다
 }
 
 export interface Entry {

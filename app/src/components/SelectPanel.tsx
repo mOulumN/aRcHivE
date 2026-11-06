@@ -29,7 +29,7 @@ export function SelectPanel({ ids, onClose, onDone, onSelectAll, allSelected }: 
   }
 
   return (
-    <FloatingPanel title={`${ids.length}장 선택`} className="select-panel" onDone={onDone ?? onClose}
+    <FloatingPanel title={`${ids.length}장 선택`} className="select-panel" onDone={onDone ?? onClose} onCancel={onDone ?? onClose}
       actions={onSelectAll && <button className="link" onClick={onSelectAll}>{allSelected ? '모두 해제' : '모두 선택'}</button>}>
       <MultiPick
         label="프로젝트"

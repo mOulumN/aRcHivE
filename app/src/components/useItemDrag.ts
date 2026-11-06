@@ -44,16 +44,22 @@ export function useItemDrag(min: { x: number; y: number }, onDrop: (d: DragState
     return { ...d, moved: true, x: Math.max(d.minX, d.left + dx), y: Math.max(d.minY, d.top + dy) }
   }
 
+  // 끌기 시작. el이 이후 포인터 이벤트를 받는다(그 요소에 bind의 핸들러가 달려 있어야 한다).
+  // 꾹 눌러 이동처럼 다른 요소에서 시작될 때도 쓴다.
+  const begin = (it: DragItem, p: { clientX: number; clientY: number; pointerId: number }, el: HTMLElement) => {
+    try {
+      el.setPointerCapture(p.pointerId)
+    } catch {
+      // 이미 끝난 포인터 등: 캡처 없이도 아래 window 이벤트로 끝까지 따라간다
+    }
+    dragged.current = false
+    ref.current = { ...it, sx: p.clientX, sy: p.clientY, left: it.x, top: it.y, moved: false, minX: min.x, minY: min.y }
+  }
+
   const bind = (it: DragItem) => ({
     onPointerDown: (e: ReactPointerEvent<HTMLElement>) => {
       if (e.button !== 0) return
-      try {
-        e.currentTarget.setPointerCapture(e.pointerId)
-      } catch {
-        // 이미 끝난 포인터 등: 캡처 없이도 아래 window 이벤트로 끝까지 따라간다
-      }
-      dragged.current = false
-      ref.current = { ...it, sx: e.clientX, sy: e.clientY, left: it.x, top: it.y, moved: false, minX: min.x, minY: min.y }
+      begin(it, e, e.currentTarget)
     },
     onPointerMove: (e: ReactPointerEvent<HTMLElement>) => {
       const d = ref.current
@@ -93,5 +99,5 @@ export function useItemDrag(min: { x: number; y: number }, onDrop: (d: DragState
     setDrag(null)
   }
 
-  return { drag, bind, consumeClick, cancel }
+  return { drag, bind, begin, consumeClick, cancel }
 }

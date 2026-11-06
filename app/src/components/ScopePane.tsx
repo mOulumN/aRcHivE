@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react'
 import { tagIdsOf, type Entry, type ID, type ProjectNote } from '../data/types'
 import { useArchive } from '../state'
 import { useConfirm } from './Ask'
@@ -106,6 +106,21 @@ export function ScopePane({ scopeId, title, list, long, absolutePins, notes, onN
   const dismiss = (e: { target: EventTarget; currentTarget: EventTarget }) => e.target === e.currentTarget && memo.dismiss()
 
   const map = mode === 'map'
+
+  // 폰: 맵을 열면 사진이 모여 있는 곳의 가운데로 화면을 옮긴다(열 때 한 번만. 그 뒤 움직이는 건 사용자 몫).
+  const centered = useRef<string | null>(null)
+  useLayoutEffect(() => {
+    if (!map) { centered.current = null; return }
+    const el = scroller.current
+    if (!el || layout.items.length === 0 || centered.current === scopeId) return
+    if (!window.matchMedia('(max-width: 767px)').matches) return
+    centered.current = scopeId
+    const n = layout.items.length
+    const cx = layout.items.reduce((sum, it) => sum + it.x + it.w / 2, 0) / n
+    const cy = layout.items.reduce((sum, it) => sum + it.y + it.h / 2, 0) / n
+    el.scrollLeft = Math.max(0, cx * z.zoom - el.clientWidth / 2)
+    el.scrollTop = Math.max(0, cy * z.zoom - el.clientHeight / 2)
+  }, [map, scopeId, layout.items, z.zoom])
   const width = Math.max(layout.width, ...notes.map((n) => n.x + n.w + 160))
   const height = Math.max(layout.height, ...notes.map((n) => n.y + Math.max(n.h ?? 160, 56 + n.text.split('\n').length * 20) + 160))
   const linkedTo = linking ? notes.find((n) => n.id === linking) : undefined
@@ -114,7 +129,7 @@ export function ScopePane({ scopeId, title, list, long, absolutePins, notes, onN
   return (
     <section className={`gallery map-pane ${map && memo.selected && !sel.on ? 'note-editing' : ''}`}>
       <PaneHeader title={title} count={list.length} primary={<>
-        <button className={`btn ghost ${sel.on ? 'on' : ''}`} aria-pressed={sel.on} onClick={() => {
+        <button className={`btn ghost ${sel.on ? 'on' : ''}`} aria-pressed={sel.on} onClick={() => { /* 켜진 상태에서 다시 누르면 선택 취소 */
           memo.dismiss(); setBaseOpen(false); sel.toggleMode()
         }}>선택{sel.on && selectedIds.length > 0 ? ` ${selectedIds.length}` : ''}</button>
         {map && <button className="btn ghost" onClick={memo.add}>메모 +</button>}
@@ -123,10 +138,9 @@ export function ScopePane({ scopeId, title, list, long, absolutePins, notes, onN
         {map && <ZoomControl {...z} />}
         {sel.on && <button className="link" onClick={toggleAll}>{allSelected ? '모두 해제' : '모두 선택'}</button>}
         {map && pinCount > 0 && <button className="btn ghost" onClick={() => void tidy()}>자동 정리</button>}
-        {map && <button className={`btn ghost ${baseOpen ? 'on' : ''}`} onClick={() => setBaseOpen((v) => !v)} aria-expanded={baseOpen}>
-          기준{base.length > 0 && <span className="info-count"> {base.length}</span>}
-        </button>}
-      </>} />
+      </>} quick={map && <button className={`btn ghost quick-base ${baseOpen ? 'on' : ''}`} onClick={() => setBaseOpen((v) => !v)} aria-expanded={baseOpen}>
+        기준{base.length > 0 && <span className="info-count"> {base.length}</span>}
+      </button>} />
 
       {map && !sel.on && <MapNoteMenu editor={memo} />}
       {sel.on && selectedIds.length > 0 && <SelectPanel ids={selectedIds} onClose={sel.clear} onDone={sel.toggleMode}

@@ -10,7 +10,7 @@
 - 상태: 아직 구현하지 않음. 실기기에서 수정 APK 실행 확인이 먼저.
 
 ## 공개 저장소 준비 — 2026-11-05
-- GitHub 공개 배포를 위해 `.gitignore`(루트·`app/`), `구현/공개범위.md`(올려도 되는/안 되는 파일, 처음 올리기 전 체크리스트), `구현/내가 해야 할 일.md`(이메일 비공개 설정 포함 사용자 몫 목록)를 만들었다.
+- GitHub 공개 배포를 위해 `.gitignore`(루트·`app/`), `구현/공개범위.md`(올려도 되는/안 되는 파일, 처음 올리기 전 체크리스트), `구현/할일.md`의 "사용자 몫"(이메일 비공개 설정 포함)를 만들었다.
 - 개인 경로·키 위치·Drive 링크는 문서에서 `<프로젝트 폴더>` 같은 자리 표시로 바꾸고 원본은 git 제외 폴더 `.local/`에 보관. 비밀번호·서명 키 파일은 원래 프로젝트 안에 없었다.
 - 개발 기록(`output/` 점검 보고서, 미리보기 서버 로그)은 "만들어 온 과정"으로 올린다. 로그 한 개(`vite-preview-error.log`)의 내 컴퓨터 경로만 가렸다(원본은 `.local/`).
 - 올라가지 않는 것: 서명 키·인증서, 레퍼런스 이미지(남의 저작물), 설치 파일·APK·zip(`인수인계/`의 스냅샷 zip에 레퍼런스 이미지가 들어 있음), `node_modules`·빌드 결과.
@@ -180,7 +180,7 @@
 4. 검증: 필요한 타입 검사와 별도 저장소에서 기존 데이터·백업 호환 및 바뀐 동작을 확인한다. 실제 사용자 데이터는 시험에 사용하지 않는다. 화면 디자인은 사용자가 직접 확인한다. 빌드·설치 파일 생성은 요청할 때만 한다.
 5. 단계마다 확인 결과와 미검증 사항을 기록하고 사용자 확인을 받는다. 홈·모바일·검색 및 중단된 태그 기능은 범위 밖이다.
 
-> ✅ 2026-11-04 전 단위 빌드 완료. 사용자가 써 본 뒤 정리(완료기록.md로 옮기고 삭제) 예정.
+> ✅ 2026-11-04 전 단위 빌드 완료. 사용자가 써 본 뒤 정리(완료기록.md로 옮기고 삭제) 예정 — 할 일은 할일.md가 기준.
 
 범위는 `UPDATE.md`, 기술 선택은 `기술결정.md`, 규칙은 `규칙.md`를 따른다.
 ⚠️ 표시는 Claude가 합리적으로 고른 설계 선택이다. 싫으면 말하면 바꾼다.
@@ -380,3 +380,40 @@ src/
 - **진행 바** (`SyncBar.tsx`): 폰이 주고받는 동안 하단에 "동기화 중 n/m".
 - 한계: 같은 항목을 두 기기에서 동시에 고치면 나중 것이 이긴다. 예전 버전 앱이 쓰면 `deleted`가 빠질 수 있으니 모든 기기를 새 버전으로. 컴퓨터는 구글 드라이브 프로그램이 파일을 옮기므로 진행 바가 없다.
 - APK 빌드: jar·aapt2 항목의 data descriptor 표시(비트 3)를 지운다(`build.ps1`). 이게 남아 있으면 최신 안드로이드(갤럭시 S26)에서 앱이 바로 꺼졌다.
+
+## 오류 3건 수정 (2026-11-06, E-03·E-04·E-05)
+- E-03 하단 탭 높이: 안드로이드 앱은 `MainActivity`가 시스템 바·키보드만큼 root 패딩을 주므로 WebView 안의 `env(safe-area-inset-bottom)`을 또 더하면 하단 줄이 두 배가 된다. `android.ts`가 `<html class="android">`를 붙이고 CSS에서 `--phone-bottom: 0px`. 폰(SM-S942N)에서 하단 줄 275px → 141px로 확인. `usePhoneViewport.ts`는 더 이상 `--app-height`를 쓰지 않는다(CSS `100dvh` 사용).
+- E-04: `.series-edit`의 hover 표시는 `@media (hover: hover)` 안으로. 선택된 줄(`.on`)은 그대로 표시.
+- E-05: 프로젝트 ✕는 `ProjectBoard.removeEntry`에서 확인 창(`danger`) 후 `removeFromProject`.
+- 시험 요령: 폰 실기기는 사용자의 실제 보관함이므로 시험 사진·프로젝트를 만들지 않는다. 폰 크기 시험은 5199 시험 서버(`.claude/launch.json`)에 `input[type=file]`로 캔버스 이미지를 넣어 한다.
+
+## T-04 폰 맵 사용성 5건 + T-05 지목→메모 단계별 (2026-11-06)
+- T-04: ① 폰에서 맵을 열면 사진 위치의 평균(무게중심)으로 스크롤(`ScopePane` `useLayoutEffect`, 열 때·범위 바뀔 때 한 번) ② 기준 버튼은 `PaneHeader`의 `quick` 슬롯으로 점 세 개 왼쪽 머리줄에 ③ `FloatingPanel`이 자기 높이를 부모의 `--panel-pad`로 알려 주고, 폰에서 `.map-scroll::after`·`.gallery-grid` 패딩으로 맨 아래 사진 밑에 그만큼 더 스크롤 ④ 선택 창에 "취소"(선택 모드 끄기, "선택" 다시 누르기와 같음) ⑤ 하단 창 머리줄 글자 14px·버튼 높이 40px·간격 18px.
+- T-05: `Board.tsx`의 `Pending`(adjust → place). 임시 도형은 `pendingRef`/state에만 있고 확인·붙이기 전에는 저장하지 않는다. `writeAnchor`가 임시 도형이면 화면 상태만, 아니면 기록에 쓴다. `PendingBar`(도형·붙일 자리 옆 확인 박스)는 칠판을 움직여도 따라가고 화면 안으로 들어오게 위치를 맞춘다. 메모 붙이기: 점선 상자(`.note-ghost`)를 끌어 놓거나 빈 곳을 눌러(6px 넘게 끌면 화면 이동) `commitPlace` → `addNote`.
+- 시험(5199 시험 서버, 컴퓨터 1200×800·폰 375×812): 누르기→도형+확인 박스, 모서리로 키우면 박스가 따라감, 확인→점선 메모 자리, 끌어 놓기·눌러 놓기가 그 위치에 메모 생성+글쓰기 칸 포커스, Esc 취소 시 저장된 도형·메모 변화 없음, Enter 확인. 폰 크기에서 박스가 화면 안에 들어오고 버튼 40px.
+
+## T-06 터치 꾹 눌러 메모 이동 (2026-11-06)
+- `useHold`: 터치·펜 포인터만(마우스 제외), 380ms 안 움직이고 누르면 `onHold`. 10px 넘게 움직이거나 `archive:gesture`(두 손가락)면 취소. 성공하면 `held` 키·진동·`contextmenu`(터치 기기) 차단.
+- 맵·프로젝트 메모: 글쓰기 칸에서 꾹 → 윗줄(`.pb-note-bar`)에 포인터 캡처를 넘겨 `useItemDrag.begin`으로 끌기를 시작(기존 윗줄 핸들러가 이어받음). 기록 화면 메모: `startNoteHold`가 `moveNote` 끌기를 시작하고 칠판(wrap)이 캡처.
+- 시험(합성 PointerEvent, pointerType=touch): 짧게 누르기=이동 없음, 누르고 먼저 움직이면 취소, 꾹 누르기=lifted→끈 만큼 정확히 이동(기록 화면 −100,+80 / 맵 메모 −60,+90), 놓으면 lifted 해제. 실제 손가락(Android WebView의 터치 캡처·글자 선택 메뉴 차단)은 미확인.
+
+## T-07 사진을 열면 가운데·화면 안 (2026-11-06)
+- `Board.fit()`: `s = min(폭×0.55/BASE, (폭−2×FIT_MARGIN)/BASE, (높이−2×FIT_MARGIN)/PH)`, `x=(폭−BASE·s)/2`, `y=(높이−PH·s)/2`. 예전의 40% 지점 배치·`MIN_FIT_SCALE`·긴 사진 위쪽 정렬은 삭제. 화면 크기가 바뀌면(사용자가 아직 안 움직였을 때)·"맞춤"에서도 같은 규칙.
+- 시험: 컴퓨터 6장(비율 0.6~1.32) 모두 중심 오차 0,0이고 칠판 안. 폰 6장 모두 폭의 55%, 중심 오차 0,0, 안.
+
+## T-08 폰 홈 메뉴 한 줄·가로 스크롤 (2026-11-06)
+- `.home-menu`(폰 767px 이하): `flex-wrap: nowrap; overflow-x: auto; align-self: stretch; width: calc(100% + 32px); margin/padding 0 -16px/16px`. `.home-head`가 `align-items: flex-start`라 stretch가 없으면 메뉴가 내용 폭이 되어 홈 전체가 가로로 밀린다. 열(`ul`)은 `flex: none`. 버튼 터치 영역은 `button::after { inset: -8px -6px }`.
+- 행 간격(폰): `.home-menu li + li { margin-top: 20px }` → 행 피치 40px(컴퓨터 20px의 두 배, 사용자 요청).
+
+## T-09 왼쪽 목록 토글+검색 (2026-11-06)
+- `SeriesList`: `tab`('category'|'project')·`query` 상태. `tabOf()`는 `view.screen==='project'`이면 프로젝트. 화면 종류가 바뀌면 렌더 중 `seen`과 비교해 탭을 맞추고 검색어를 지운다. 목록은 `match(name)`(대소문자 무시 포함 검색)으로 거른다. 프로젝트 구역 제목 줄(`.series-head`)은 없앰. CSS `.side-switch`, `.side-search`(폰 min-height 44px).
+- 시험(컴퓨터 1200×800): 처음 카테고리, "디"→디자인·디지털만, "게"→게임만, 없는 검색어→추가 줄만, 토글 시 검색어 비움, 프로젝트 열면 프로젝트 탭, 카테고리 열면 카테고리 탭. 폰 375: 서랍 330px 안에서 토글 150×44px 두 개·검색 44px.
+
+## T-05 추가 수정 (2026-11-06)
+- 폰 하단 줄 `ToolButton tool="select" label="연결"` 삭제. `chooseTool`: 같은 도구를 다시 누르면 'select'로(막다른 길 방지). 지목 범위: 그리기·옮기기·크기 조절·기본 크기 위치의 `clamp`를 사진 안(0~1)에서 `REACH=1`만큼 바깥(−1~2, 세로는 ×ratio)까지로 넓힘(svg는 `overflow="visible"`). 지목을 쓰는 곳은 기록 화면뿐이라 다른 화면 영향 없음. `.anchor-confirm` 배경·테두리·패딩 제거(버튼만).
+- 시험: 컴퓨터에서 사진 오른쪽 아래 모서리부터 밖으로 끌어 그리면 도형이 사진 밖으로 오른쪽 90px·아래 61px 나감, 확인 박스 배경 투명·테두리 0. 폰에서 하단 줄 ○ □ 메모만, ○ 두 번 누르면 꺼짐, 다른 도구로 바로 전환 가능.
+
+## T-10 메모 글자 크기 저장 + 전체 확대 (2026-11-06)
+- `types.ts`: `Note.fontSize?`, `ProjectNote.fontSize?`(배율 100% 기준 px). 렌더: `n.fontSize ?? settings.noteFontSize`(더 이상 ÷배율 안 함). 생성: `roundFont(settings.noteFontSize / 배율)`(`Board.addNote`, `useMapNotes.add`). `components/MemoFont.tsx`: `shownFont/storedFont`(저장값 ↔ 지금 보이는 px), 컨트롤 `MemoFont`(− +, 6~80px). 폰 `.memo-font-float`(하단 메뉴 위 왼쪽, 색 팝업이 열리면 숨김).
+- 병합(`merge.ts`)은 메모를 기록 단위로 합치므로 fontSize는 기록과 함께 움직인다.
+

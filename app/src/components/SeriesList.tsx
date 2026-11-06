@@ -8,6 +8,10 @@ import { TagManager } from './TagManager'
 
 // 보관 화면 왼쪽 카테고리 리스트 (F-20). 레퍼런스: 자유캔버스_01
 // 다른 카테고리를 누르면 틀은 그대로 두고 오른쪽만 바뀐다. 이름 바꾸기·지우기는 줄 오른쪽에서.
+// 위에서 [카테고리|프로젝트]를 골라 그 목록만 보여 주고, 그 아래 검색 칸으로 이름을 좁힌다(I-08).
+// 처음엔 카테고리. 화면이 카테고리↔프로젝트로 바뀌면 목록도 지금 열린 쪽을 따른다.
+
+type Tab = 'category' | 'project'
 
 export function SeriesList() {
   const { series, entries, view, go, createSeries, renameSeries, deleteSeries } = useArchive()
@@ -18,6 +22,22 @@ export function SeriesList() {
   const drag = useEntryDrag()
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [tagsOpen, setTagsOpen] = useState(false)
+  const tabOf = (): Tab => (view.screen === 'project' ? 'project' : 'category')
+  const [tab, setTab] = useState<Tab>(tabOf)
+  const [query, setQuery] = useState('')
+  const [seen, setSeen] = useState(view.screen)
+  if (seen !== view.screen) { // 열린 화면의 종류가 바뀌면 목록도 그쪽으로
+    setSeen(view.screen)
+    setTab(tabOf())
+    setQuery('')
+  }
+  const switchTab = (next: Tab) => {
+    if (next === tab) return
+    setTab(next)
+    setQuery('')
+  }
+  const q = query.trim().toLowerCase()
+  const match = (name: string) => !q || name.toLowerCase().includes(q)
   const filter = view.screen === 'archive' ? view.filter : null // 프로젝트를 보는 중엔 카테고리 강조 없음
   const projectId = view.screen === 'project' ? view.projectId : null
 
@@ -123,22 +143,32 @@ export function SeriesList() {
           aRcHivE
         </button>
       </div>
+      <div className="side-switch">
+        <div className="tool-group" role="group" aria-label="목록 종류">
+          <button className={`tool ${tab === 'category' ? 'on' : ''}`} aria-pressed={tab === 'category'} onClick={() => switchTab('category')}>카테고리</button>
+          <button className={`tool ${tab === 'project' ? 'on' : ''}`} aria-pressed={tab === 'project'} onClick={() => switchTab('project')}>프로젝트</button>
+        </div>
+        <input className="side-search" value={query} placeholder="검색" aria-label={tab === 'category' ? '카테고리 검색' : '프로젝트 검색'}
+          onChange={(e) => setQuery(e.target.value)} />
+      </div>
       <ul className="series-list">
-        {row('all', '전체', entries.length)}
-        {series.map((s) => row(s.id, s.name, counts.get(s.id) ?? 0, { id: s.id }))}
-        {(counts.get(null) ?? 0) > 0 && row('none', '카테고리 없음', counts.get(null) ?? 0)}
-        <li className="series-row">
-          <button className="series-item add" onClick={() => void add()}>
-            <span className="series-name">+ 새 카테고리</span>
-          </button>
-        </li>
-        <li className="series-head">프로젝트</li>
-        {projects.map((p) => projectRow(p.id, p.name, p.entryIds.length))}
-        <li className="series-row">
-          <button className="series-item add" onClick={() => void addProject()}>
-            <span className="series-name">+ 새 프로젝트</span>
-          </button>
-        </li>
+        {tab === 'category' ? <>
+          {match('전체') && row('all', '전체', entries.length)}
+          {series.filter((s) => match(s.name)).map((s) => row(s.id, s.name, counts.get(s.id) ?? 0, { id: s.id }))}
+          {(counts.get(null) ?? 0) > 0 && match('카테고리 없음') && row('none', '카테고리 없음', counts.get(null) ?? 0)}
+          <li className="series-row">
+            <button className="series-item add" onClick={() => void add()}>
+              <span className="series-name">+ 새 카테고리</span>
+            </button>
+          </li>
+        </> : <>
+          {projects.filter((p) => match(p.name)).map((p) => projectRow(p.id, p.name, p.entryIds.length))}
+          <li className="series-row">
+            <button className="series-item add" onClick={() => void addProject()}>
+              <span className="series-name">+ 새 프로젝트</span>
+            </button>
+          </li>
+        </>}
       </ul>
       <div className="side-bottom">
         <button className="series-item" onClick={() => setTagsOpen(true)}>

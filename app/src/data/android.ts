@@ -29,6 +29,8 @@ const encode = (bytes: ArrayBuffer) => new Promise<string>((resolve, reject) => 
 
 export function installAndroidBridge() {
   if (!window.archiveAndroid) return
+  // 앱(MainActivity)이 이미 시스템 바 높이만큼 화면을 줄여 주므로 CSS의 안전 여백(env)을 또 더하지 않는다(E-03).
+  document.documentElement.classList.add('android')
   const fs: ArchiveFs = {
     // 저장 위치를 아직 안 정했으면 null → 처음 화면에서 앱 내부 / 다른 폴더(드라이브 등)를 고른다.
     getFolder: async () => call<string | null>('getFolder'),

@@ -25,7 +25,7 @@ Run-Tool 'jar' @('cf', (Join-Path $buildRoot 'classes.jar'), '-C', (Join-Path $b
 Run-Tool (Join-Path $toolsRoot 'd8.bat') @('--min-api','26','--lib',$platform,'--output',(Join-Path $buildRoot 'dex'),(Join-Path $buildRoot 'classes.jar'))
 Run-Tool (Join-Path $toolsRoot 'aapt2.exe') @('compile','--dir',(Join-Path $androidRoot 'res'),'-o',(Join-Path $buildRoot 'resources.zip'))
 $unsigned = Join-Path $buildRoot 'unsigned.apk'
-Run-Tool (Join-Path $toolsRoot 'aapt2.exe') @('link','-o',$unsigned,'--manifest',(Join-Path $androidRoot 'AndroidManifest.xml'),'-I',$platform,'--min-sdk-version','26','--target-sdk-version','35','--version-code','2','--version-name','0.1.1','-R',(Join-Path $buildRoot 'resources.zip'))
+Run-Tool (Join-Path $toolsRoot 'aapt2.exe') @('link','-o',$unsigned,'--manifest',(Join-Path $androidRoot 'AndroidManifest.xml'),'-I',$platform,'--min-sdk-version','26','--target-sdk-version','35','--version-code','3','--version-name','0.1.2','-R',(Join-Path $buildRoot 'resources.zip'))
 Run-Tool 'jar' @('uf',$unsigned,'-C',(Join-Path $buildRoot 'dex'),'classes.dex')
 # Windows aapt2의 -A는 하위 경로를 역슬래시로 기록할 수 있으므로 직접 추가한다.
 Add-Type -AssemblyName System.IO.Compression
@@ -90,7 +90,7 @@ if (!$Keystore -and !(Test-Path -LiteralPath $key)) {
 }
 $releaseRoot = Join-Path (Split-Path $appRoot) '설치파일'
 New-Item -ItemType Directory -Path $releaseRoot -Force | Out-Null
-$apk = Join-Path $releaseRoot $(if ($Keystore) { 'aRcHivE-Android-0.1.1-release.apk' } else { 'aRcHivE-Android-0.1.1.apk' })
+$apk = Join-Path $releaseRoot $(if ($Keystore) { 'aRcHivE-Android-0.1.2-release.apk' } else { 'aRcHivE-Android-0.1.2.apk' })
 if ($Keystore) {
   # 비밀번호는 apksigner가 콘솔에서 직접 묻는다. 명령이나 파일에 기록하지 않는다.
   Run-Tool (Join-Path $toolsRoot 'apksigner.bat') @('sign','--ks',$key,'--ks-key-alias',$KeyAlias,'--out',$apk,$aligned)
